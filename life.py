@@ -7,6 +7,8 @@ import curses
 from math import sqrt
 import random
 
+from requests import delete
+
 
 class life:
     def __init__(self, height, width):
@@ -15,6 +17,7 @@ class life:
 
     # initialising the window
     def winInit(self):
+        curses.initscr()
         self.win = curses.newwin(self.height, self.width, 0, 0)
         self.win.clear()
         self.win.border()
@@ -35,7 +38,7 @@ class life:
 
     # return x, y, color, velocity-x, velocity-y
     def returnParticle(self, x, y, color, vx, vy):
-        return {"x":x, "y":y, "color":color, "vx":vx, "vy":vy}
+        return [{"x":x, "y":y, "color":color, "vx":vx, "vy":vy}]
 
 
     # creating many particle
@@ -57,54 +60,67 @@ class life:
     def drawParticles(self, particles):
         i = len(particles) - 1
         while i >= 0:
-            self.oneParticle(particles[i]["x"],
-                             particles[i]["y"], particles[i]["color"])
+            self.oneParticle(particles[i][0]["x"],
+                             particles[i][0]["y"], particles[i][0]["color"])
             i -= 1
 
 
     # force of attraction
     # F = GmM/R^2
-    def mainRule(self, particles1, particles2, g):
-        fx =0 
-        fy =0
+    # def mainRule(self, particles1, particles2, g):
+    #     fx =0 
+    #     fy =0
+    #     i = len(particles1) 
+    #     j = len(particles2[0]) - 1
+    #     print(i, j)
+    #     # while i !=0 :
+    #     #     while j!=0:
+    #     #         print(i, j["x"])
+    #         # a = particles1[0]
+    #         # b = particles2[1]
+    #         # rx = b["x"]-a["x"]
+    #         # ry = b["y"]-a["y"]
+    #         # r = int(sqrt(pow(rx, 2)+pow(ry, 2)))
+    #         # print(r)
+    #         # if (r > 0):
+    #         #     F = int(g*1/r)
+    #         #     fx += (F*rx)
+    #         #     fy += (F*ry)
+    #         #     self.blue[0]["x"] += fx
+    #         #     self.blue[0]["y"] += fy
 
-        a = particles1[0]
-        b = particles2[1]
-        rx = b["x"]-a["x"]
-        ry = b["y"]-a["y"]
-        r = int(sqrt(pow(rx, 2)+pow(ry, 2)))
-        print(r)
-        if (r > 0):
-            F = int(g*1/r)
-            fx += (F*rx)
-            fy += (F*ry)
-            self.blue[0]["x"] += fx
-            self.blue[0]["y"] += fy
 
-
-            #print(a["x"])
+    #         #print(a["x"])
 
     # the main loop
     def winRun(self):
-        self.win.timeout(100)
+        vel = 1
+        self.win.timeout(vel)
         self.blue = self.manyParticles(2, colorNumber=1)
+        print(self.blue)
         # self.manyParticles(150, colorNumber=2)
         # self.manyParticles(150, colorNumber=3)
         # self.manyParticles(150, colorNumber=4)
-        fx = 0
-        fy = 0
+        
+        
         while True:
-            print(self.blue[0]["x"])
+            # self.mainRule(self.blue, self.blue, 1)
             self.drawParticles(self.blue)
-            self.blue[0]["x"] += 1
-            self.blue.pop()
-            print("x", self.blue[0]["x"])
+            x = self.blue[0][0]["x"]
+            y = self.blue[0][0]["y"]
+            tail = self.blue.pop(0)
+            self.blue.insert(0, self.returnParticle(x+1, y, color=1, vx=0, vy=0))
+            self.win.addch(tail[0]["y"], tail[0]["x"], ' ')
+            # print(tail[0]["x"])
+            
+            
             self.key = self.win.getch()
             if self.key == ord("q"):
                 break
             
-            # print(self.blue[0]["x"], self.blue[1]["y"])
 
+        # #     # print(self.blue[0]["x"], self.blue[1]["y"])
+        # print(self.blue)
         self.win.refresh()
 
 
