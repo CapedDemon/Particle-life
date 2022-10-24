@@ -24,75 +24,90 @@
 </details>
 
 ## Documentation
+
 Particle Life is just a simple python script.
-It makes a window and shows different movement of particles, 
-whose rules are defined by us while writing the code. It is a simple 
+It makes a window and shows different movement of particles,
+whose rules are defined by us while writing the code. It is a simple
 python script in which I have implemented OOP.
 
 ### Libraries
-The python libraries that are used are :- 
+
+The python libraries that are used are :-
+
 - pygame
-    - ```pip install pygame```
+
+  - `pip install pygame`
 
 - math
 - random
 
 ### Code explanation
+
 - A `Particle` class is there which takes -
-    - true for running the while loop
-    - width of screen
-    - height of screen
-    - color of screen in rgb in this case - ```rgb(0,0,0)```
+  - true for running the while loop
+  - width of screen
+  - height of screen
+  - color of screen in rgb in this case - `rgb(0,0,0)`
 - `createParticle` function - This renders a particle in the screen with specific color and coordinates
 - `returnParticle` function - Returns a dict consisting of x,y,color,velocityX,velocityY
 - `manyParticles` function - Returns a list of particles consisting of the above dictionary with random x and y positions
 - `createParticles` function - Creates all the particles in the list returned above using the `createParticle` function
 - `mainRule` function - Uses physics and maths formula to attract the particles towards each other and reflect back the particles by using the value of `g`
-    - Formula Used:- 
-        - F = GMm/r^2
-        - squareroot[(x2-x1)^2 + (y2-y1)^2]
-        - F = ma
-    - Important things - 
-        - g is -ve if the particles are attracted
-        - g is +ve if the particles are repelling each other
+  - Formula Used:-
+    - F = GMm/r^2
+    - squareroot[(x2-x1)^2 + (y2-y1)^2]
+    - F = ma
+  - Important things -
+    - g is -ve if the particles are attracted
+    - g is +ve if the particles are repelling each other
 
 ### Main Rules and Rendering Particles
-- To render particles two things we need to run - 
-    - ```self.yellowParticles = self.manyParticles(200, self.yellow)```  - To get the list of particles
-    - ```self.createParticles(self.yellowParticles)``` - To render the particles, used in the while loop
+
+- To render particles two things we need to run -
+
+  - `self.yellowParticles = self.manyParticles(200, self.yellow)` - To get the list of particles
+  - `self.createParticles(self.yellowParticles)` - To render the particles, used in the while loop
 
 - To write the mainrules, we need to give 3 arguements - particles list1, particle list2, g
-    - ```self.mainRule(self.yellowParticles, self.yellowParticles, -0.1)``` - Here yellow particles are attracted by each other by a small force of 0.1
+  - `self.mainRule(self.yellowParticles, self.yellowParticles, -0.1)` - Here yellow particles are attracted by each other by a small force of 0.1
 
 ### Simulation
+
 You can simulate the particle animation by writing the mainrule, rendering particles and defining colors.
+
 - Define colors
-    - ```self.yellow = (255, 255, 0)``` - It should be written in ```def __init__```
+
+  - `self.yellow = (255, 255, 0)` - It should be written in `def __init__`
 
 - About Rendering particles you can get the information above
 - Write your mainrules as you want in the while loop
-
 
 ## Examples/Tests
 
 |                                                                                                                                                    First Test Case                                                                                                                                                     |                                                                                                                                                                                                             Second Test Case                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Third Test Case                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                                                                                                                         ![]()                                                                                                                                                          |                                                                                                                                                                                                                   ![]()                                                                                                                                                                                                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ![]()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|                                                                                                                     ![https://github.com/Shreejan-35/Particle-life/blob/master/images/first.gif]()                                                                                                                     |                                                                                                                                                                              ![https://github.com/Shreejan-35/Particle-life/blob/master/images/second.gif]()                                                                                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ![https://github.com/Shreejan-35/Particle-life/blob/master/images/third.gif]()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `self.mainRule(self.redParticles, self.redParticles, -0.1) self.mainRule(self.yellowParticles, self.redParticles, 0.01) self.mainRule(self.redParticles, self.yellowParticles, -0.01) self.mainRule(self.yellowParticles, self.yellowParticles, -0.1) self.mainRule(self.yellowParticles, self.yellowParticles, 0.01)` | `self.mainRule(self.redParticles, self.redParticles, 0.1) self.mainRule(self.yellowParticles, self.redParticles, -0.12) self.mainRule(self.greenParticles, self.greenParticles, -0.7) self.mainRule(self.greenParticles, self.redParticles, -0.2) self.mainRule(self.redParticles, self.greenParticles, -0.1) self.mainRule(self.greenParticles, self.greenParticles, 0.10) self.mainRule(self.redParticles, self.yellowParticles, 0.09)` | `self.mainRule(self.yellowParticles, self.yellowParticles, 0.1) self.mainRule(self.blueParticles, self.blueParticles, 0.1) self.mainRule(self.blueParticles, self.yellowParticles, -0.12) self.mainRule(self.yellowParticles, self.blueParticles, 0.01) self.mainRule(self.yellowParticles, self.greenParticles, 0.1) self.mainRule(self.blueParticles, self.greenParticles, -0.23) self.mainRule(self.blueParticles, self.redParticles, -0.2) self.mainRule(self.redParticles, self.blueParticles, -0.1) self.mainRule(self.greenParticles, self.blueParticles, 0.12) self.mainRule(self.redParticles, self.redParticles, 0.1) self.mainRule(self.yellowParticles, self.redParticles, -0.12) self.mainRule(self.greenParticles, self.greenParticles, -0.7) self.mainRule(self.greenParticles, self.redParticles, -0.2) self.mainRule(self.redParticles, self.greenParticles, -0.1) self.mainRule(self.greenParticles, self.yellowParticles, 0.13) self.mainRule(self.greenParticles, self.greenParticles, 0.10) self.mainRule(self.redParticles, self.yellowParticles, 0.09) self.mainRule(self.yellowParticles, self.redParticles, -0.2)` |
 
-
 ## Installation
+
 The Installation is pretty easy.
+
 - Make a directory in your computer to store the files.
 - Go into the directory and clone the git repository
+
 ```
-git clone 
+git clone
 ```
+
 - Open your favourite terminal, and type this commands
+
 ```
 pip3 install requirements.txt
 ```
+
 Then,
+
 ```
 python3 run.py
 ```
@@ -111,4 +126,5 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 ## License
+
 MIT LICENSE
