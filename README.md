@@ -1,6 +1,6 @@
 <div align="center">
     <h1>Particle Life</h1><h5> An A.I. simulation of particles 🎇</h5>
-    <img src="https://img.shields.io/github/stars/Shreejan-35/Particle-life?style=for-the-badge"></img>
+    <img src="https://img.shields.io/github/stars/Shreejan-35/Particle-life?style=for-the-badge"></img> <img src="https://img.shields.io/readthedocs/pip?style=for-the-badge"></img> <img src="https://img.shields.io/maintenance/yes/2022?style=for-the-badge"></img>
 </div>
 
 
