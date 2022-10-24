@@ -1,7 +1,8 @@
 <div align="center">
-    <h1>Particle Life</h1>
-    <h5> An A.I. simulation of particles 🎇</h5>
+    <h1>Particle Life</h1><h5> An A.I. simulation of particles 🎇</h5>
+    <img src="https://img.shields.io/github/stars/Shreejan-35/Particle-life?style=for-the-badge"></img>
 </div>
+
 
 <details>
   <summary>Table of Contents</summary>
@@ -11,14 +12,16 @@
       <ul>
         <li><a href="#libraries">Libraries</a></li>
 		<li><a href="#code-explanation">Code Explanation</a></li>
-		<li><a href="#main-rules-and-renedreing-particles">Main Rules and Rendering Particles</a></li>
+		<li><a href="#rendering-particles">Rendering Particles</a></li>
+	        <li><a href="#main-rules">Main Rules</a></li>
 		<li><a href="#simulation">Simulation</a></li>
       </ul>
     </li>
-    <li><a href="#examples/tests">Examples/Tests</a>
+    <li><a href="#examplestests">Examples/Tests</a>
 	</li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#support">Support</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -61,13 +64,13 @@ The python libraries that are used are :-
     - g is -ve if the particles are attracted
     - g is +ve if the particles are repelling each other
 
-### Main Rules and Rendering Particles
-
+### Rendering Particles
 - To render particles two things we need to run -
 
   - `self.yellowParticles = self.manyParticles(200, self.yellow)` - To get the list of particles
   - `self.createParticles(self.yellowParticles)` - To render the particles, used in the while loop
-
+  
+### Main Rules
 - To write the mainrules, we need to give 3 arguements - particles list1, particle list2, g
   - `self.mainRule(self.yellowParticles, self.yellowParticles, -0.1)` - Here yellow particles are attracted by each other by a small force of 0.1
 
@@ -97,7 +100,7 @@ The Installation is pretty easy.
 - Go into the directory and clone the git repository
 
 ```
-git clone
+git clone https://github.com/Shreejan-35/Particle-life.git
 ```
 
 - Open your favourite terminal, and type this commands
@@ -124,6 +127,9 @@ Don't forget to give the project a star! Thanks again!
 3. Commit your Changes (`git commit -m 'Add some advices'`)
 4. Push to the Branch (`git push origin`)
 5. Open a Pull Request
+
+## Support
+Support me by following me and giving a ✨ to this repo.
 
 ## License
 
