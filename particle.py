@@ -4,10 +4,7 @@ from pygame.locals import *
 import random
 import math
 
-from regex import D
-
-
-class particle:
+class Particle:
     def __init__(self, running, width, height, color):
         # initialising pygame
         pygame.init()
@@ -35,7 +32,6 @@ class particle:
 
     def createParticle(self, x, y, color):
         pygame.draw.rect(self.screen, color, (x, y, 2, 2))
-        pygame.display.update()
 
     # returns a dict
 
@@ -103,41 +99,44 @@ class particle:
             # when they hit the wall
             if (a["x"] <= 0 or a["x"] >= 700):
                 a["vx"] *= -1
-            elif (a["y"] <=0 or a["y"] >= 500):
+            elif (a["y"] <= 0 or a["y"] >= 500):
                 a["vy"] *= -1
-
         self.screen.fill(0)
 
     # the main loop
 
     def gameLoop(self):
         # defining particles
-        self.yellowParticles = self.manyParticles(20, self.yellow)
-        self.redParticles = self.manyParticles(20, self.red)
+        self.yellowParticles = self.manyParticles(200, self.yellow)
+        self.redParticles = self.manyParticles(200, self.red)
+        self.greenParticles = self.manyParticles(200, self.green)
+        self.blueParticles = self.manyParticles(200, self.blue)
 
         while self.running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
-            
             # creating the particles
             self.createParticles(self.yellowParticles)
             self.createParticles(self.redParticles)
+            self.createParticles(self.greenParticles)
+            self.createParticles(self.blueParticles)
 
+            # updating the display
+            pygame.display.update()
+
+            # enter your rules here
             # defining the rules
-            self.mainRule(self.redParticles, self.redParticles, -1)
-            self.mainRule(self.redParticles, self.yellowParticles, -0.1)
-            self.mainRule(self.redParticles, self.yellowParticles, 1)
+            self.mainRule(self.yellowParticles, self.yellowParticles, -0.1)
 
-
-            self.clock.tick(98)
+            self.clock.tick(78)
         pygame.quit()
 
 # the main function
 
 
 def main():
-    particleLife = particle(True, 700, 500, (0, 0, 0))
+    particleLife = Particle(True, 700, 500, (0, 0, 0))
     particleLife.gameLoop()
 
 
