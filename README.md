@@ -100,7 +100,7 @@ The Installation is pretty easy.
 - Go into the directory and clone the git repository
 
 ```
-git clone https://github.com/Shreejan-35/Particle-life.git
+git clone https://github.com/CommandConsole/Particle-life.git
 ```
 
 - Open your favourite terminal, and type this commands
