@@ -1,4 +1,4 @@
-#importing the required libraries
+# importing the required libraries
 import pygame
 from pygame.locals import *
 import random
