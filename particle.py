@@ -1,4 +1,4 @@
-# importing the required libraries
+#importing the required libraries
 import pygame
 from pygame.locals import *
 import random
@@ -128,8 +128,19 @@ class Particle:
             # enter your rules here
             # defining the rules
             self.mainRule(self.yellowParticles, self.yellowParticles, -0.1)
+            self.mainRule(self.yellowParticles, self.yellowParticles, 0.01)
+            self.mainRule(self.blueParticles, self.yellowParticles, -0.0124)
+            self.mainRule(self.blueParticles, self.blueParticles, -0.1)
+            self.mainRule(self.yellowParticles, self.blueParticles, 0.004)
+            self.mainRule(self.greenParticles, self.blueParticles, 0.002)
+            self.mainRule(self.yellowParticles, self.greenParticles, -0.097)
+            self.mainRule(self.greenParticles, self.yellowParticles, -0.097)
+            self.mainRule(self.greenParticles, self.yellowParticles, 0.0095)
 
-            self.clock.tick(78)
+
+
+
+            self.clock.tick(120)
         pygame.quit()
 
 # the main function
